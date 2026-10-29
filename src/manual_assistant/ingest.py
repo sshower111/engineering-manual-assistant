@@ -46,11 +46,16 @@ def load_sections(data_dir: Path) -> list[Section]:
     return load_freecad_sections(raw / "freecad") + load_calculix_sections(raw / "calculix")
 
 
+# Chunks shorter than this are usually just a heading with no content.
+MIN_CHUNK_CHARS = 60
+
+
 def build_chunks(sections: list[Section], size: int, overlap: int) -> list[Chunk]:
     chunks: dict[str, Chunk] = {}
     for section in sections:
         for chunk in chunk_section(section, size, overlap):
-            chunks[chunk.id] = chunk  # dedupe identical chunks
+            if len(chunk.text) >= MIN_CHUNK_CHARS:
+                chunks[chunk.id] = chunk  # dedupe identical chunks
     return list(chunks.values())
 
 
@@ -62,6 +67,7 @@ def main() -> None:
     parser.add_argument("--collection", default=settings.collection_name)
     args = parser.parse_args()
     logging.basicConfig(level=logging.INFO, format="%(message)s")
+    logging.getLogger("httpx").setLevel(logging.WARNING)
 
     sections = load_sections(settings.data_dir)
     processed = settings.data_dir / "processed"

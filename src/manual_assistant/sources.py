@@ -20,7 +20,6 @@ FREECAD_PAGES = [
     "FEM_ConstraintTemperature",
     "FEM_MeshGmshFromShape",
     "FEM_MeshNetgenFromShape",
-    "FEM_SolverCalculiXCcxTools",
     "FEM_SolverCalculiX",
     "FEM_ResultShow",
     "FEM_PostPipelineFromResult",
@@ -74,8 +73,8 @@ FREECAD_PAGES = [
 
 # Newest first; the download script uses the first one that exists.
 CALCULIX_PDF_CANDIDATES = [
-    "http://www.dhondt.de/ccx_2.23.pdf",
-    "http://www.dhondt.de/ccx_2.22.pdf",
+    "https://www.dhondt.de/ccx_2.23.pdf",
+    "https://www.dhondt.de/ccx_2.22.pdf",
 ]
 
 

@@ -64,6 +64,7 @@ def main() -> None:
     parser.add_argument("--delay", type=float, default=1.0, help="seconds between wiki requests")
     args = parser.parse_args()
     logging.basicConfig(level=logging.INFO, format="%(message)s")
+    logging.getLogger("httpx").setLevel(logging.WARNING)
 
     raw_dir = get_settings().data_dir / "raw"
     headers = {"User-Agent": USER_AGENT}

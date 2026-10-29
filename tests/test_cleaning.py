@@ -1,4 +1,9 @@
-from manual_assistant.cleaning import OutlineEntry, pdf_pages_to_sections, wiki_html_to_sections
+from manual_assistant.cleaning import (
+    OutlineEntry,
+    clean_pdf_page,
+    pdf_pages_to_sections,
+    wiki_html_to_sections,
+)
 
 OLD_STYLE_HTML = """
 <div class="mw-parser-output">
@@ -75,3 +80,17 @@ def test_pdf_title_not_found_starts_at_page_top():
     outline = [OutlineEntry(("Intro",), 0), OutlineEntry(("Missing",), 1)]
     sections = pdf_pages_to_sections(pages, outline, "CCX", "u")
     assert sections[1].text == "body without heading"
+
+
+def test_clean_pdf_page_removes_even_page_header():
+    raw = "140\n\n6 THEORY\n\n6.4\n\nFluid Section Types: Gases\n\nBefore introducing"
+    assert clean_pdf_page(raw, 140) == "6.4\n\nFluid Section Types: Gases\n\nBefore introducing"
+
+
+def test_clean_pdf_page_removes_odd_page_header_and_late_page_number():
+    raw = "6.4 Fluid Section Types: Gases\n\nM =\n\n141\n\nwhere κ is the speciﬁc heat"
+    assert clean_pdf_page(raw, 141) == "M =\n\nwhere κ is the specific heat"
+
+
+def test_clean_pdf_page_rejoins_hyphenated_words():
+    assert clean_pdf_page("No cal-\n\nculation is done", 3) == "No calculation is done"

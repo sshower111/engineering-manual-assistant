@@ -7,6 +7,10 @@ import chromadb
 from manual_assistant.embeddings import Embedder
 from manual_assistant.models import Chunk, RetrievedChunk
 
+# Chroma's default HNSW search_ef is 10, which misses obvious best matches even on a
+# few thousand chunks. A larger value costs little at this scale and keeps recall high.
+COLLECTION_METADATA = {"hnsw:space": "cosine", "hnsw:search_ef": 200, "hnsw:construction_ef": 200}
+
 
 def embedding_text(chunk: Chunk) -> str:
     """Text that gets embedded: the chunk prefixed with where it comes from."""
@@ -23,13 +27,13 @@ class VectorStore:
         self._name = collection_name
         self._embedder = embedder
         self._collection = client.get_or_create_collection(
-            collection_name, metadata={"hnsw:space": "cosine"}
+            collection_name, metadata=COLLECTION_METADATA
         )
 
     def reset(self) -> None:
         self._client.delete_collection(self._name)
         self._collection = self._client.get_or_create_collection(
-            self._name, metadata={"hnsw:space": "cosine"}
+            self._name, metadata=COLLECTION_METADATA
         )
 
     def count(self) -> int:

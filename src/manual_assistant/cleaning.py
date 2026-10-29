@@ -1,5 +1,7 @@
 """Turn raw downloads (wiki HTML, manual PDF) into cleaned ``Section`` objects."""
 
+import re
+import unicodedata
 from dataclasses import dataclass
 
 from bs4 import BeautifulSoup, Tag
@@ -126,12 +128,36 @@ def pdf_pages_to_sections(
     return sections
 
 
+NUMBERED_HEADER = re.compile(r"^\d+(\.\d+)*\.?\s+\S.*$")
+
+
+def clean_pdf_page(text: str, page_number: int) -> str:
+    """Remove the running header and page number pdfminer puts at the top of a page.
+
+    Pages of the CalculiX manual start with e.g. ``"140\\n\\n6 THEORY\\n\\n"`` (even
+    pages) or ``"6.4 Fluid Section Types: Gases\\n\\n...\\n\\n141"`` (odd pages).
+    Real headings are split by pdfminer into ``"6.4\\n\\nFluid ..."``, so a numbered
+    one-line first paragraph is the running header.
+    """
+    text = unicodedata.normalize("NFKC", text)
+    paragraphs = text.split("\n\n")
+    head = [p for p in paragraphs[:4] if p.strip() != str(page_number)]
+    paragraphs = head + paragraphs[4:]
+    if paragraphs and "\n" not in paragraphs[0] and NUMBERED_HEADER.match(paragraphs[0].strip()):
+        paragraphs = paragraphs[1:]
+    text = "\n\n".join(paragraphs)
+    # Rejoin words hyphenated across line breaks: "cal-\n\nculation" -> "calculation".
+    return re.sub(r"(\w)-\n+(\w)", r"\1\2", text)
+
+
 def read_pdf(path: str) -> tuple[list[str], list[OutlineEntry]]:
-    """Extract page texts and a flattened outline from a PDF."""
+    """Extract cleaned page texts (pdfminer) and a flattened outline (pypdf) from a PDF."""
+    from pdfminer.high_level import extract_text
     from pypdf import PdfReader
 
     reader = PdfReader(path)
-    pages = [page.extract_text() or "" for page in reader.pages]
+    raw_pages = extract_text(path).split("\f")[: len(reader.pages)]
+    pages = [clean_pdf_page(text, i + 1) for i, text in enumerate(raw_pages)]
     outline: list[OutlineEntry] = []
 
     def walk(items: list, parents: tuple[str, ...]) -> None:
