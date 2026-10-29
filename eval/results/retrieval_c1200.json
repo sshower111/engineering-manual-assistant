@@ -1,0 +1,926 @@
+{
+  "summary": {
+    "questions": 50,
+    "answerable": 45,
+    "unanswerable": 5,
+    "hit_rate": 0.956,
+    "hit_rate_at_1": 0.867,
+    "mrr": 0.904,
+    "correct_refusal_rate": 0.4,
+    "false_refusal_rate": 0.0,
+    "chunk_size": 1200,
+    "chunk_overlap": 200,
+    "min_score": 0.45
+  },
+  "results": [
+    {
+      "id": "q01",
+      "answerable": true,
+      "refused": false,
+      "hit_rank": 1,
+      "top_score": 0.6978,
+      "facts_found": 0,
+      "facts_total": 2,
+      "judge_correct": null,
+      "answer": "",
+      "latency_ms": 0.0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "refusal_reason": null,
+      "missing_facts": [
+        "3",
+        "6"
+      ]
+    },
+    {
+      "id": "q02",
+      "answerable": true,
+      "refused": false,
+      "hit_rank": null,
+      "top_score": 0.6613,
+      "facts_found": 0,
+      "facts_total": 1,
+      "judge_correct": null,
+      "answer": "",
+      "latency_ms": 0.0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "refusal_reason": null,
+      "missing_facts": [
+        "*BOUNDARY"
+      ]
+    },
+    {
+      "id": "q03",
+      "answerable": true,
+      "refused": false,
+      "hit_rank": 1,
+      "top_score": 0.6516,
+      "facts_found": 0,
+      "facts_total": 1,
+      "judge_correct": null,
+      "answer": "",
+      "latency_ms": 0.0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "refusal_reason": null,
+      "missing_facts": [
+        "100 N|100N"
+      ]
+    },
+    {
+      "id": "q04",
+      "answerable": true,
+      "refused": false,
+      "hit_rank": 1,
+      "top_score": 0.661,
+      "facts_found": 0,
+      "facts_total": 1,
+      "judge_correct": null,
+      "answer": "",
+      "latency_ms": 0.0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "refusal_reason": null,
+      "missing_facts": [
+        "*CLOAD"
+      ]
+    },
+    {
+      "id": "q05",
+      "answerable": true,
+      "refused": false,
+      "hit_rank": 1,
+      "top_score": 0.8087,
+      "facts_found": 0,
+      "facts_total": 1,
+      "judge_correct": null,
+      "answer": "",
+      "latency_ms": 0.0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "refusal_reason": null,
+      "missing_facts": [
+        "Gmsh"
+      ]
+    },
+    {
+      "id": "q06",
+      "answerable": true,
+      "refused": false,
+      "hit_rank": 1,
+      "top_score": 0.7819,
+      "facts_found": 0,
+      "facts_total": 2,
+      "judge_correct": null,
+      "answer": "",
+      "latency_ms": 0.0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "refusal_reason": null,
+      "missing_facts": [
+        "Preferences",
+        "Gmsh"
+      ]
+    },
+    {
+      "id": "q07",
+      "answerable": true,
+      "refused": false,
+      "hit_rank": 1,
+      "top_score": 0.7205,
+      "facts_found": 0,
+      "facts_total": 3,
+      "judge_correct": null,
+      "answer": "",
+      "latency_ms": 0.0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "refusal_reason": null,
+      "missing_facts": [
+        "Second Order Linear",
+        "Element Order",
+        "Characteristic Length Max"
+      ]
+    },
+    {
+      "id": "q08",
+      "answerable": true,
+      "refused": false,
+      "hit_rank": 1,
+      "top_score": 0.7291,
+      "facts_found": 0,
+      "facts_total": 1,
+      "judge_correct": null,
+      "answer": "",
+      "latency_ms": 0.0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "refusal_reason": null,
+      "missing_facts": [
+        "Elmer"
+      ]
+    },
+    {
+      "id": "q09",
+      "answerable": true,
+      "refused": false,
+      "hit_rank": 2,
+      "top_score": 0.7252,
+      "facts_found": 0,
+      "facts_total": 1,
+      "judge_correct": null,
+      "answer": "",
+      "latency_ms": 0.0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "refusal_reason": null,
+      "missing_facts": [
+        "ccx"
+      ]
+    },
+    {
+      "id": "q10",
+      "answerable": true,
+      "refused": false,
+      "hit_rank": 1,
+      "top_score": 0.7468,
+      "facts_found": 0,
+      "facts_total": 1,
+      "judge_correct": null,
+      "answer": "",
+      "latency_ms": 0.0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "refusal_reason": null,
+      "missing_facts": [
+        "nonpositive Jacobian"
+      ]
+    },
+    {
+      "id": "q11",
+      "answerable": true,
+      "refused": false,
+      "hit_rank": 1,
+      "top_score": 0.7464,
+      "facts_found": 0,
+      "facts_total": 1,
+      "judge_correct": null,
+      "answer": "",
+      "latency_ms": 0.0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "refusal_reason": null,
+      "missing_facts": [
+        "9.81"
+      ]
+    },
+    {
+      "id": "q12",
+      "answerable": true,
+      "refused": false,
+      "hit_rank": 1,
+      "top_score": 0.507,
+      "facts_found": 0,
+      "facts_total": 1,
+      "judge_correct": null,
+      "answer": "",
+      "latency_ms": 0.0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "refusal_reason": null,
+      "missing_facts": [
+        "*INCLUDE"
+      ]
+    },
+    {
+      "id": "q13",
+      "answerable": true,
+      "refused": false,
+      "hit_rank": 1,
+      "top_score": 0.7358,
+      "facts_found": 0,
+      "facts_total": 2,
+      "judge_correct": null,
+      "answer": "",
+      "latency_ms": 0.0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "refusal_reason": null,
+      "missing_facts": [
+        "extrude",
+        "sketch"
+      ]
+    },
+    {
+      "id": "q14",
+      "answerable": true,
+      "refused": false,
+      "hit_rank": 1,
+      "top_score": 0.7871,
+      "facts_found": 0,
+      "facts_total": 1,
+      "judge_correct": null,
+      "answer": "",
+      "latency_ms": 0.0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "refusal_reason": null,
+      "missing_facts": [
+        "wider"
+      ]
+    },
+    {
+      "id": "q15",
+      "answerable": true,
+      "refused": false,
+      "hit_rank": 1,
+      "top_score": 0.7301,
+      "facts_found": 0,
+      "facts_total": 1,
+      "judge_correct": null,
+      "answer": "",
+      "latency_ms": 0.0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "refusal_reason": null,
+      "missing_facts": [
+        "10 m|10 meter|10m"
+      ]
+    },
+    {
+      "id": "q16",
+      "answerable": true,
+      "refused": false,
+      "hit_rank": 1,
+      "top_score": 0.7388,
+      "facts_found": 0,
+      "facts_total": 1,
+      "judge_correct": null,
+      "answer": "",
+      "latency_ms": 0.0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "refusal_reason": null,
+      "missing_facts": [
+        "last feature"
+      ]
+    },
+    {
+      "id": "q17",
+      "answerable": true,
+      "refused": false,
+      "hit_rank": 1,
+      "top_score": 0.7195,
+      "facts_found": 0,
+      "facts_total": 2,
+      "judge_correct": null,
+      "answer": "",
+      "latency_ms": 0.0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "refusal_reason": null,
+      "missing_facts": [
+        "countersink",
+        "counterbore"
+      ]
+    },
+    {
+      "id": "q18",
+      "answerable": true,
+      "refused": false,
+      "hit_rank": 1,
+      "top_score": 0.5863,
+      "facts_found": 0,
+      "facts_total": 1,
+      "judge_correct": null,
+      "answer": "",
+      "latency_ms": 0.0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "refusal_reason": null,
+      "missing_facts": [
+        "edge"
+      ]
+    },
+    {
+      "id": "q19",
+      "answerable": true,
+      "refused": false,
+      "hit_rank": 1,
+      "top_score": 0.7186,
+      "facts_found": 0,
+      "facts_total": 2,
+      "judge_correct": null,
+      "answer": "",
+      "latency_ms": 0.0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "refusal_reason": null,
+      "missing_facts": [
+        "standalone",
+        "Body"
+      ]
+    },
+    {
+      "id": "q20",
+      "answerable": true,
+      "refused": false,
+      "hit_rank": 1,
+      "top_score": 0.6438,
+      "facts_found": 0,
+      "facts_total": 1,
+      "judge_correct": null,
+      "answer": "",
+      "latency_ms": 0.0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "refusal_reason": null,
+      "missing_facts": [
+        "OCCT|OpenCASCADE|Open CASCADE"
+      ]
+    },
+    {
+      "id": "q21",
+      "answerable": true,
+      "refused": false,
+      "hit_rank": 1,
+      "top_score": 0.8365,
+      "facts_found": 0,
+      "facts_total": 2,
+      "judge_correct": null,
+      "answer": "",
+      "latency_ms": 0.0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "refusal_reason": null,
+      "missing_facts": [
+        "horizontal",
+        "vertical"
+      ]
+    },
+    {
+      "id": "q22",
+      "answerable": true,
+      "refused": false,
+      "hit_rank": 1,
+      "top_score": 0.6798,
+      "facts_found": 0,
+      "facts_total": 1,
+      "judge_correct": null,
+      "answer": "",
+      "latency_ms": 0.0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "refusal_reason": null,
+      "missing_facts": [
+        "4|four"
+      ]
+    },
+    {
+      "id": "q23",
+      "answerable": true,
+      "refused": false,
+      "hit_rank": 1,
+      "top_score": 0.7619,
+      "facts_found": 0,
+      "facts_total": 1,
+      "judge_correct": null,
+      "answer": "",
+      "latency_ms": 0.0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "refusal_reason": null,
+      "missing_facts": [
+        "collinear"
+      ]
+    },
+    {
+      "id": "q24",
+      "answerable": true,
+      "refused": false,
+      "hit_rank": 1,
+      "top_score": 0.7335,
+      "facts_found": 0,
+      "facts_total": 1,
+      "judge_correct": null,
+      "answer": "",
+      "latency_ms": 0.0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "refusal_reason": null,
+      "missing_facts": [
+        ".FCMacro"
+      ]
+    },
+    {
+      "id": "q25",
+      "answerable": true,
+      "refused": false,
+      "hit_rank": 1,
+      "top_score": 0.7893,
+      "facts_found": 0,
+      "facts_total": 1,
+      "judge_correct": null,
+      "answer": "",
+      "latency_ms": 0.0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "refusal_reason": null,
+      "missing_facts": [
+        "/S"
+      ]
+    },
+    {
+      "id": "q26",
+      "answerable": true,
+      "refused": false,
+      "hit_rank": 1,
+      "top_score": 0.8338,
+      "facts_found": 0,
+      "facts_total": 1,
+      "judge_correct": null,
+      "answer": "",
+      "latency_ms": 0.0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "refusal_reason": null,
+      "missing_facts": [
+        "brew install"
+      ]
+    },
+    {
+      "id": "q27",
+      "answerable": true,
+      "refused": false,
+      "hit_rank": 1,
+      "top_score": 0.8639,
+      "facts_found": 0,
+      "facts_total": 2,
+      "judge_correct": null,
+      "answer": "",
+      "latency_ms": 0.0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "refusal_reason": null,
+      "missing_facts": [
+        "name",
+        "break"
+      ]
+    },
+    {
+      "id": "q28",
+      "answerable": true,
+      "refused": false,
+      "hit_rank": 1,
+      "top_score": 0.8974,
+      "facts_found": 0,
+      "facts_total": 1,
+      "judge_correct": null,
+      "answer": "",
+      "latency_ms": 0.0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "refusal_reason": null,
+      "missing_facts": [
+        "Ondsel"
+      ]
+    },
+    {
+      "id": "q29",
+      "answerable": true,
+      "refused": false,
+      "hit_rank": 1,
+      "top_score": 0.6172,
+      "facts_found": 0,
+      "facts_total": 2,
+      "judge_correct": null,
+      "answer": "",
+      "latency_ms": 0.0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "refusal_reason": null,
+      "missing_facts": [
+        "pi",
+        "Euler"
+      ]
+    },
+    {
+      "id": "q30",
+      "answerable": true,
+      "refused": false,
+      "hit_rank": 1,
+      "top_score": 0.7555,
+      "facts_found": 0,
+      "facts_total": 2,
+      "judge_correct": null,
+      "answer": "",
+      "latency_ms": 0.0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "refusal_reason": null,
+      "missing_facts": [
+        "position",
+        "quaternion"
+      ]
+    },
+    {
+      "id": "q31",
+      "answerable": true,
+      "refused": false,
+      "hit_rank": 1,
+      "top_score": 0.8303,
+      "facts_found": 0,
+      "facts_total": 1,
+      "judge_correct": null,
+      "answer": "",
+      "latency_ms": 0.0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "refusal_reason": null,
+      "missing_facts": [
+        "Unified Measurement Facility"
+      ]
+    },
+    {
+      "id": "q32",
+      "answerable": true,
+      "refused": false,
+      "hit_rank": 3,
+      "top_score": 0.6432,
+      "facts_found": 0,
+      "facts_total": 3,
+      "judge_correct": null,
+      "answer": "",
+      "latency_ms": 0.0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "refusal_reason": null,
+      "missing_facts": [
+        "temperature",
+        "displacement",
+        "rotation"
+      ]
+    },
+    {
+      "id": "q33",
+      "answerable": true,
+      "refused": false,
+      "hit_rank": 2,
+      "top_score": 0.695,
+      "facts_found": 0,
+      "facts_total": 1,
+      "judge_correct": null,
+      "answer": "",
+      "latency_ms": 0.0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "refusal_reason": null,
+      "missing_facts": [
+        "11"
+      ]
+    },
+    {
+      "id": "q34",
+      "answerable": true,
+      "refused": false,
+      "hit_rank": null,
+      "top_score": 0.6859,
+      "facts_found": 0,
+      "facts_total": 1,
+      "judge_correct": null,
+      "answer": "",
+      "latency_ms": 0.0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "refusal_reason": null,
+      "missing_facts": [
+        "*CLOAD"
+      ]
+    },
+    {
+      "id": "q35",
+      "answerable": true,
+      "refused": false,
+      "hit_rank": 1,
+      "top_score": 0.561,
+      "facts_found": 0,
+      "facts_total": 2,
+      "judge_correct": null,
+      "answer": "",
+      "latency_ms": 0.0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "refusal_reason": null,
+      "missing_facts": [
+        "frequency",
+        "gravity|GRAV"
+      ]
+    },
+    {
+      "id": "q36",
+      "answerable": true,
+      "refused": false,
+      "hit_rank": 1,
+      "top_score": 0.6189,
+      "facts_found": 0,
+      "facts_total": 1,
+      "judge_correct": null,
+      "answer": "",
+      "latency_ms": 0.0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "refusal_reason": null,
+      "missing_facts": [
+        "80"
+      ]
+    },
+    {
+      "id": "q37",
+      "answerable": true,
+      "refused": false,
+      "hit_rank": 1,
+      "top_score": 0.684,
+      "facts_found": 0,
+      "facts_total": 2,
+      "judge_correct": null,
+      "answer": "",
+      "latency_ms": 0.0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "refusal_reason": null,
+      "missing_facts": [
+        "*FREQUENCY",
+        "10"
+      ]
+    },
+    {
+      "id": "q38",
+      "answerable": true,
+      "refused": false,
+      "hit_rank": 1,
+      "top_score": 0.6925,
+      "facts_found": 0,
+      "facts_total": 2,
+      "judge_correct": null,
+      "answer": "",
+      "latency_ms": 0.0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "refusal_reason": null,
+      "missing_facts": [
+        "10-node|ten-node",
+        "tetrahedral"
+      ]
+    },
+    {
+      "id": "q39",
+      "answerable": true,
+      "refused": false,
+      "hit_rank": 1,
+      "top_score": 0.6802,
+      "facts_found": 0,
+      "facts_total": 2,
+      "judge_correct": null,
+      "answer": "",
+      "latency_ms": 0.0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "refusal_reason": null,
+      "missing_facts": [
+        "PaStiX",
+        "iterative"
+      ]
+    },
+    {
+      "id": "q40",
+      "answerable": true,
+      "refused": false,
+      "hit_rank": 1,
+      "top_score": 0.7525,
+      "facts_found": 0,
+      "facts_total": 2,
+      "judge_correct": null,
+      "answer": "",
+      "latency_ms": 0.0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "refusal_reason": null,
+      "missing_facts": [
+        "OMP_NUM_THREADS|OMP NUM THREADS",
+        "CCX_NPROC_STIFFNESS|CCX NPROC STIFFNESS"
+      ]
+    },
+    {
+      "id": "q41",
+      "answerable": true,
+      "refused": false,
+      "hit_rank": 1,
+      "top_score": 0.6065,
+      "facts_found": 0,
+      "facts_total": 1,
+      "judge_correct": null,
+      "answer": "",
+      "latency_ms": 0.0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "refusal_reason": null,
+      "missing_facts": [
+        "consistent"
+      ]
+    },
+    {
+      "id": "q42",
+      "answerable": true,
+      "refused": false,
+      "hit_rank": 1,
+      "top_score": 0.5651,
+      "facts_found": 0,
+      "facts_total": 1,
+      "judge_correct": null,
+      "answer": "",
+      "latency_ms": 0.0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "refusal_reason": null,
+      "missing_facts": [
+        "linear"
+      ]
+    },
+    {
+      "id": "q43",
+      "answerable": true,
+      "refused": false,
+      "hit_rank": 3,
+      "top_score": 0.7042,
+      "facts_found": 0,
+      "facts_total": 2,
+      "judge_correct": null,
+      "answer": "",
+      "latency_ms": 0.0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "refusal_reason": null,
+      "missing_facts": [
+        "ELSET",
+        "MATERIAL"
+      ]
+    },
+    {
+      "id": "q44",
+      "answerable": true,
+      "refused": false,
+      "hit_rank": 1,
+      "top_score": 0.7402,
+      "facts_found": 0,
+      "facts_total": 1,
+      "judge_correct": null,
+      "answer": "",
+      "latency_ms": 0.0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "refusal_reason": null,
+      "missing_facts": [
+        "*END STEP"
+      ]
+    },
+    {
+      "id": "q45",
+      "answerable": true,
+      "refused": false,
+      "hit_rank": 1,
+      "top_score": 0.4649,
+      "facts_found": 0,
+      "facts_total": 1,
+      "judge_correct": null,
+      "answer": "",
+      "latency_ms": 0.0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "refusal_reason": null,
+      "missing_facts": [
+        "buckling load"
+      ]
+    },
+    {
+      "id": "q46",
+      "answerable": false,
+      "refused": true,
+      "hit_rank": null,
+      "top_score": 0.4044,
+      "facts_found": 0,
+      "facts_total": 0,
+      "judge_correct": null,
+      "answer": "",
+      "latency_ms": 0.0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "refusal_reason": null,
+      "missing_facts": []
+    },
+    {
+      "id": "q47",
+      "answerable": false,
+      "refused": true,
+      "hit_rank": null,
+      "top_score": 0.4361,
+      "facts_found": 0,
+      "facts_total": 0,
+      "judge_correct": null,
+      "answer": "",
+      "latency_ms": 0.0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "refusal_reason": null,
+      "missing_facts": []
+    },
+    {
+      "id": "q48",
+      "answerable": false,
+      "refused": false,
+      "hit_rank": null,
+      "top_score": 0.4772,
+      "facts_found": 0,
+      "facts_total": 0,
+      "judge_correct": null,
+      "answer": "",
+      "latency_ms": 0.0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "refusal_reason": null,
+      "missing_facts": []
+    },
+    {
+      "id": "q49",
+      "answerable": false,
+      "refused": false,
+      "hit_rank": null,
+      "top_score": 0.5251,
+      "facts_found": 0,
+      "facts_total": 0,
+      "judge_correct": null,
+      "answer": "",
+      "latency_ms": 0.0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "refusal_reason": null,
+      "missing_facts": []
+    },
+    {
+      "id": "q50",
+      "answerable": false,
+      "refused": false,
+      "hit_rank": null,
+      "top_score": 0.5914,
+      "facts_found": 0,
+      "facts_total": 0,
+      "judge_correct": null,
+      "answer": "",
+      "latency_ms": 0.0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "refusal_reason": null,
+      "missing_facts": []
+    }
+  ]
+}
