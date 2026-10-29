@@ -4,7 +4,7 @@ import re
 import unicodedata
 from dataclasses import dataclass
 
-from bs4 import BeautifulSoup, Tag
+from bs4 import BeautifulSoup, Comment, Tag
 
 from manual_assistant.chunking import normalize_whitespace
 from manual_assistant.models import Section
@@ -20,6 +20,7 @@ WIKI_JUNK_SELECTORS = [
     "#toc",
     ".noprint",
     ".navbox",
+    ".NavFrame",  # collapsible workbench / user-docs navigation at the page bottom
     "sup.reference",
     ".reference",
     ".references",
@@ -63,6 +64,8 @@ def wiki_html_to_sections(html: str, title: str, page_url: str) -> list[Section]
             sections.append(Section("freecad", title, name, url, text))
 
     for element in root.children:
+        if isinstance(element, Comment):  # e.g. the parser's "NewPP limit report"
+            continue
         if not isinstance(element, Tag):
             if str(element).strip():
                 parts.append(str(element))

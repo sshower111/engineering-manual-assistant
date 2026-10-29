@@ -17,6 +17,9 @@ OLD_STYLE_HTML = """
   <h3><span class="mw-headline" id="Installing_CalculiX">Installing CalculiX</span></h3>
   <p>It ships with FreeCAD.</p>
   <script>var x = 1;</script>
+  <div class="NavFrame"><div class="NavHead">FEM</div>
+    <div class="NavContent">Materials: Solid Material</div></div>
+  <!-- NewPP limit report Cached time: 20261029 -->
 </div>
 """
 
@@ -39,7 +42,7 @@ def test_wiki_sections_split_on_headings():
 
 def test_wiki_chrome_is_removed():
     text = " ".join(s.text for s in wiki_html_to_sections(OLD_STYLE_HTML, "T", "u"))
-    for junk in ("Previous", "Contents", "[edit]", "var x"):
+    for junk in ("Previous", "Contents", "[edit]", "var x", "Solid Material", "NewPP"):
         assert junk not in text
 
 

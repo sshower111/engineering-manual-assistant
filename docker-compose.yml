@@ -1,0 +1,24 @@
+services:
+  app:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY:?set ANTHROPIC_API_KEY}
+    volumes:
+      - ./data:/app/data      # Chroma index built by the ingest service
+      - ./logs:/app/logs      # JSON query log
+      - hf-cache:/cache/huggingface
+
+  # One-off: download the docs and build the index.
+  #   docker compose run --rm ingest
+  ingest:
+    build: .
+    profiles: ["tools"]
+    command: sh -c "python -m manual_assistant.download && python -m manual_assistant.ingest"
+    volumes:
+      - ./data:/app/data
+      - hf-cache:/cache/huggingface
+
+volumes:
+  hf-cache:

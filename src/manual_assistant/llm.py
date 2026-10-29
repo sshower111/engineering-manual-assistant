@@ -94,3 +94,43 @@ class ClaudeAnswerGenerator:
             input_tokens=usage.input_tokens,
             output_tokens=usage.output_tokens,
         )
+
+
+JUDGE_PROMPT = """\
+You grade answers from a documentation assistant. Given a question, the key facts a \
+correct answer must contain, and the assistant's answer, decide whether the answer states \
+every key fact (wording may differ) and contains nothing that contradicts them."""
+
+
+class JudgeVerdict(BaseModel):
+    correct: bool
+    reason: str = Field(description="One sentence explaining the verdict")
+
+
+class ClaudeJudge:
+    """Optional LLM-as-judge for answer correctness (a second opinion on key-fact matching)."""
+
+    def __init__(self, model: str, client: Any = None) -> None:
+        if client is None:
+            import anthropic
+
+            client = anthropic.Anthropic()
+        self._client = client
+        self._model = model
+
+    def judge(self, question: str, key_facts: list[str], answer: str) -> JudgeVerdict:
+        facts = "\n".join(f"- {fact.replace('|', ' or ')}" for fact in key_facts)
+        response = self._client.messages.parse(
+            model=self._model,
+            max_tokens=2000,
+            system=JUDGE_PROMPT,
+            messages=[
+                {
+                    "role": "user",
+                    "content": f"Question: {question}\n\nKey facts:\n{facts}\n\nAnswer:\n{answer}",
+                }
+            ],
+            output_format=JudgeVerdict,
+            output_config={"effort": "low"},
+        )
+        return response.parsed_output or JudgeVerdict(correct=False, reason="no verdict")

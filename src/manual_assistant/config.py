@@ -25,6 +25,8 @@ class Settings(BaseSettings):
     llm_max_tokens: int = 4000  # includes thinking tokens
     llm_effort: str = "low"  # short factual answers don't need deep thinking
 
+    judge_model: str = "claude-haiku-5-5"
+
     snippet_chars: int = 300
 
     log_file: Path = Path("logs/queries.jsonl")

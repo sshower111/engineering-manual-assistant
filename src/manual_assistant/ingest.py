@@ -12,7 +12,7 @@ from pathlib import Path
 
 from manual_assistant.chunking import chunk_section
 from manual_assistant.cleaning import pdf_pages_to_sections, read_pdf, wiki_html_to_sections
-from manual_assistant.config import get_settings
+from manual_assistant.config import Settings, get_settings
 from manual_assistant.embeddings import SentenceTransformerEmbedder
 from manual_assistant.models import Chunk, Section
 from manual_assistant.sources import freecad_page_url
@@ -59,6 +59,28 @@ def build_chunks(sections: list[Section], size: int, overlap: int) -> list[Chunk
     return list(chunks.values())
 
 
+def build_index(settings: Settings, size: int, overlap: int, collection: str) -> int:
+    """Clean, chunk and index all raw documents into ``collection``. Returns the chunk count."""
+    sections = load_sections(settings.data_dir)
+    processed = settings.data_dir / "processed"
+    processed.mkdir(parents=True, exist_ok=True)
+    with (processed / "sections.jsonl").open("w", encoding="utf-8") as f:
+        for section in sections:
+            f.write(json.dumps(asdict(section)) + "\n")
+
+    chunks = build_chunks(sections, size, overlap)
+    log.info("sections per source: %s", dict(Counter(s.source for s in sections)))
+    log.info("chunks: %d (size=%d, overlap=%d)", len(chunks), size, overlap)
+
+    store = VectorStore(
+        settings.chroma_dir, collection, SentenceTransformerEmbedder(settings.embedding_model)
+    )
+    store.reset()
+    store.add(chunks)
+    log.info("indexed %d chunks into collection %r", store.count(), collection)
+    return store.count()
+
+
 def main() -> None:
     settings = get_settings()
     parser = argparse.ArgumentParser(description=__doc__)
@@ -69,24 +91,4 @@ def main() -> None:
     logging.basicConfig(level=logging.INFO, format="%(message)s")
     logging.getLogger("httpx").setLevel(logging.WARNING)
 
-    sections = load_sections(settings.data_dir)
-    processed = settings.data_dir / "processed"
-    processed.mkdir(parents=True, exist_ok=True)
-    with (processed / "sections.jsonl").open("w", encoding="utf-8") as f:
-        for section in sections:
-            f.write(json.dumps(asdict(section)) + "\n")
-
-    chunks = build_chunks(sections, args.chunk_size, args.chunk_overlap)
-    log.info("sections per source: %s", dict(Counter(s.source for s in sections)))
-    log.info("chunks: %d (size=%d, overlap=%d)", len(chunks), args.chunk_size, args.chunk_overlap)
-
-    store = VectorStore(
-        settings.chroma_dir, args.collection, SentenceTransformerEmbedder(settings.embedding_model)
-    )
-    store.reset()
-    store.add(chunks)
-    log.info("indexed %d chunks into collection %r", store.count(), args.collection)
-
-
-if __name__ == "__main__":
-    main()
+    build_index(settings, args.chunk_size, args.chunk_overlap, args.collection)

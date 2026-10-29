@@ -1,6 +1,7 @@
 """The RAG pipeline: retrieve, decide whether to answer, generate, log."""
 
 import time
+from dataclasses import dataclass, field
 from typing import Protocol
 
 from manual_assistant.llm import AnswerGenerator
@@ -13,6 +14,16 @@ REFUSAL = "I don't know. The indexed documentation does not cover this question.
 
 class Retriever(Protocol):
     def search(self, query: str, top_k: int) -> list[RetrievedChunk]: ...
+
+
+@dataclass
+class AskResult:
+    """The API response plus the details the evaluation needs."""
+
+    response: AskResponse
+    hits: list[RetrievedChunk]
+    refusal_reason: str | None = None
+    record: dict = field(default_factory=dict)
 
 
 def snippet(text: str, max_chars: int) -> str:
@@ -39,6 +50,9 @@ class Assistant:
         self._snippet_chars = snippet_chars
 
     def ask(self, question: str) -> AskResponse:
+        return self.ask_with_details(question).response
+
+    def ask_with_details(self, question: str) -> AskResult:
         start = time.perf_counter()
         hits = self._retriever.search(question, self._top_k)
         retrieval_ms = (time.perf_counter() - start) * 1000
@@ -81,4 +95,4 @@ class Assistant:
         record["confidence"] = response.confidence
         record["latency_ms"] = round((time.perf_counter() - start) * 1000, 1)
         self._logger.log(record)
-        return response
+        return AskResult(response, hits, record.get("refusal_reason"), record)
