@@ -22,7 +22,10 @@ class Settings(BaseSettings):
     min_score: float = 0.35
 
     llm_model: str = "claude-sonnet-5-5"
-    llm_max_tokens: int = 800
+    llm_max_tokens: int = 4000  # includes thinking tokens
+    llm_effort: str = "low"  # short factual answers don't need deep thinking
+
+    snippet_chars: int = 300
 
     log_file: Path = Path("logs/queries.jsonl")
 

@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Engineering Manual Assistant</title>
+  <style>
+    :root {
+      --bg: #f7f7f5; --fg: #1d1d1b; --muted: #6b6b66; --card: #ffffff;
+      --border: #deddd8; --accent: #2457c5; --warn: #9a5b00;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #161615; --fg: #ecebe6; --muted: #9c9b95; --card: #1f1f1d;
+        --border: #34332f; --accent: #7aa2ff; --warn: #e0a64a;
+      }
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; background: var(--bg); color: var(--fg);
+      font: 16px/1.55 system-ui, -apple-system, "Segoe UI", sans-serif;
+    }
+    main { max-width: 760px; margin: 0 auto; padding: 32px 16px 64px; }
+    h1 { font-size: 1.4rem; margin: 0 0 4px; }
+    .sub { color: var(--muted); margin: 0 0 24px; }
+    form { display: flex; gap: 8px; }
+    input {
+      flex: 1; min-width: 0; padding: 10px 12px; font: inherit; color: inherit;
+      background: var(--card); border: 1px solid var(--border); border-radius: 8px;
+    }
+    button {
+      padding: 10px 16px; font: inherit; color: #fff; background: var(--accent);
+      border: 0; border-radius: 8px; cursor: pointer;
+    }
+    button:disabled { opacity: .6; cursor: wait; }
+    .examples { margin: 10px 0 28px; font-size: .9rem; color: var(--muted); }
+    .examples a { color: var(--accent); cursor: pointer; margin-right: 12px; }
+    .answer {
+      background: var(--card); border: 1px solid var(--border); border-radius: 10px;
+      padding: 16px 18px; white-space: pre-wrap;
+    }
+    .answer.refused { color: var(--warn); }
+    .meta { color: var(--muted); font-size: .85rem; margin: 8px 2px 20px; }
+    h2 { font-size: 1rem; margin: 0 0 8px; }
+    .citation {
+      border-left: 3px solid var(--accent); padding: 4px 0 4px 12px; margin: 0 0 14px;
+    }
+    .citation a { color: var(--accent); font-weight: 600; text-decoration: none; }
+    .citation p { margin: 4px 0 0; color: var(--muted); font-size: .9rem; }
+    .error { color: var(--warn); }
+  </style>
+</head>
+<body>
+<main>
+  <h1>Engineering Manual Assistant</h1>
+  <p class="sub">Answers from the FreeCAD wiki and the CalculiX manual, with citations.</p>
+
+  <form id="form">
+    <input id="question" placeholder="e.g. How do I apply a fixed constraint to a face?"
+           autocomplete="off" required minlength="3" maxlength="1000">
+    <button id="ask" type="submit">Ask</button>
+  </form>
+  <div class="examples">
+    Try:
+    <a>What does the *CLOAD keyword do?</a>
+    <a>Which meshers does the FEM Workbench support?</a>
+  </div>
+
+  <section id="result" hidden>
+    <div id="answer" class="answer"></div>
+    <div id="meta" class="meta"></div>
+    <h2 id="citations-heading">Sources</h2>
+    <div id="citations"></div>
+  </section>
+  <p id="error" class="error" hidden></p>
+</main>
+
+<script>
+  const $ = (id) => document.getElementById(id);
+
+  document.querySelectorAll(".examples a").forEach((link) => {
+    link.addEventListener("click", () => {
+      $("question").value = link.textContent;
+      $("form").requestSubmit();
+    });
+  });
+
+  $("form").addEventListener("submit", async (event) => {
+    event.preventDefault();
+    $("ask").disabled = true;
+    $("error").hidden = true;
+    try {
+      const response = await fetch("/ask", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ question: $("question").value }),
+      });
+      if (!response.ok) throw new Error(`Request failed (${response.status})`);
+      render(await response.json());
+    } catch (err) {
+      $("error").textContent = err.message;
+      $("error").hidden = false;
+    } finally {
+      $("ask").disabled = false;
+    }
+  });
+
+  function render(data) {
+    const refused = data.citations.length === 0;
+    $("answer").textContent = data.answer;
+    $("answer").classList.toggle("refused", refused);
+    $("meta").textContent = refused ? "" : `Confidence ${data.confidence.toFixed(2)}`;
+    $("citations-heading").hidden = refused;
+    $("citations").replaceChildren(...data.citations.map((c) => {
+      const item = document.createElement("div");
+      item.className = "citation";
+      const link = document.createElement("a");
+      link.href = c.source;
+      link.target = "_blank";
+      link.rel = "noopener";
+      link.textContent = c.section;
+      const snippet = document.createElement("p");
+      snippet.textContent = c.snippet;
+      item.append(link, snippet);
+      return item;
+    }));
+    $("result").hidden = false;
+  }
+</script>
+</body>
+</html>
