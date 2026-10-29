@@ -57,7 +57,11 @@ def test_pdf_sections_follow_outline():
         OutlineEntry(("Input deck", "*CLOAD"), 2),
     ]
     sections = pdf_pages_to_sections(pages, outline, "CCX", "http://x/ccx.pdf")
-    assert [s.section for s in sections] == ["Introduction", "Input deck > *BOUNDARY", "Input deck > *CLOAD"]
+    assert [s.section for s in sections] == [
+        "Introduction",
+        "Input deck > *BOUNDARY",
+        "Input deck > *CLOAD",
+    ]
     boundary = sections[1]
     assert boundary.url == "http://x/ccx.pdf#page=2"
     assert "Keyword for constraints" in boundary.text

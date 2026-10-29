@@ -26,7 +26,12 @@ class Chunk:
     url: str
 
     def metadata(self) -> dict[str, str]:
-        return {"source": self.source, "title": self.title, "section": self.section, "url": self.url}
+        return {
+            "source": self.source,
+            "title": self.title,
+            "section": self.section,
+            "url": self.url,
+        }
 
 
 @dataclass(frozen=True)

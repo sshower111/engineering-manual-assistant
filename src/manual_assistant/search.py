@@ -25,7 +25,9 @@ def main() -> None:
         print(f"\n=== {query}")
         for hit in store.search(query, args.top_k):
             snippet = hit.text[:160].replace("\n", " ")
-            print(f"{hit.score:.3f}  {hit.title} > {hit.section}\n       {hit.url}\n       {snippet}…")
+            print(
+                f"{hit.score:.3f}  {hit.title} > {hit.section}\n       {hit.url}\n       {snippet}…"
+            )
 
 
 if __name__ == "__main__":
