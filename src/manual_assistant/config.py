@@ -18,8 +18,9 @@ class Settings(BaseSettings):
     chunk_overlap: int = 150  # characters
 
     top_k: int = 5
-    # Cosine similarity below which we refuse to answer.
-    min_score: float = 0.35
+    # Refuse without calling the LLM when the best cosine similarity is below this.
+    # 0.45 is the highest value with no false refusals in the retrieval-only eval sweep.
+    min_score: float = 0.45
 
     llm_model: str = "claude-sonnet-5-5"
     llm_max_tokens: int = 4000  # includes thinking tokens

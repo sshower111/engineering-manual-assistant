@@ -123,7 +123,7 @@ All settings are environment variables with the `MA_` prefix (see `config.py`):
 |---|---|---|
 | `MA_CHUNK_SIZE` / `MA_CHUNK_OVERLAP` | 800 / 150 | chunk size and overlap in characters |
 | `MA_TOP_K` | 5 | chunks retrieved per question |
-| `MA_MIN_SCORE` | 0.35 | refuse below this cosine similarity |
+| `MA_MIN_SCORE` | 0.45 | refuse below this cosine similarity |
 | `MA_LLM_MODEL` | `claude-sonnet-5-5` | answer model |
 | `MA_LLM_EFFORT` | `low` | Claude effort level |
 | `MA_JUDGE_MODEL` | `claude-haiku-5-5` | optional eval judge |
