@@ -1,6 +1,12 @@
 from fakes import FakeAnthropicClient, chunk
 
-from manual_assistant.llm import ClaudeAnswerGenerator, LLMAnswer, build_user_message
+from manual_assistant.llm import (
+    ClaudeAnswerGenerator,
+    ClaudeJudge,
+    JudgeVerdict,
+    LLMAnswer,
+    build_user_message,
+)
 
 CHUNKS = [chunk("hash-a", 0.8, "Fixed constraint text."), chunk("hash-b", 0.6, "Pad text.")]
 
@@ -51,3 +57,12 @@ def test_unanswerable_or_empty_answer_is_a_refusal():
 def test_api_refusal_stop_reason_is_a_refusal():
     client = FakeAnthropicClient(parsed=None, stop_reason="refusal")
     assert not generator(client).generate("How?", CHUNKS).answerable
+
+
+def test_judge_returns_verdict_and_token_usage():
+    client = FakeAnthropicClient(JudgeVerdict(correct=True, reason="All facts present."))
+    judgement = ClaudeJudge("claude-haiku-5-5", client=client).judge("Q?", ["a|b", "c"], "a c")
+
+    assert judgement.correct
+    assert (judgement.input_tokens, judgement.output_tokens) == (100, 20)
+    assert "- a or b\n- c" in client.requests[0]["messages"][0]["content"]

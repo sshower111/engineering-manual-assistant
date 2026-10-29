@@ -107,6 +107,14 @@ class JudgeVerdict(BaseModel):
     reason: str = Field(description="One sentence explaining the verdict")
 
 
+@dataclass(frozen=True)
+class Judgement:
+    correct: bool
+    reason: str
+    input_tokens: int = 0
+    output_tokens: int = 0
+
+
 class ClaudeJudge:
     """Optional LLM-as-judge for answer correctness (a second opinion on key-fact matching)."""
 
@@ -118,7 +126,7 @@ class ClaudeJudge:
         self._client = client
         self._model = model
 
-    def judge(self, question: str, key_facts: list[str], answer: str) -> JudgeVerdict:
+    def judge(self, question: str, key_facts: list[str], answer: str) -> Judgement:
         facts = "\n".join(f"- {fact.replace('|', ' or ')}" for fact in key_facts)
         response = self._client.messages.parse(
             model=self._model,
@@ -133,4 +141,6 @@ class ClaudeJudge:
             output_format=JudgeVerdict,
             output_config={"effort": "low"},
         )
-        return response.parsed_output or JudgeVerdict(correct=False, reason="no verdict")
+        verdict = response.parsed_output or JudgeVerdict(correct=False, reason="no verdict")
+        usage = response.usage
+        return Judgement(verdict.correct, verdict.reason, usage.input_tokens, usage.output_tokens)

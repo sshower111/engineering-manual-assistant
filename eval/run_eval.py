@@ -67,7 +67,10 @@ def evaluate(args, size: int, overlap: int, embedder) -> tuple[dict, list[Questi
         result.input_tokens = detail.record.get("input_tokens", 0)
         result.output_tokens = detail.record.get("output_tokens", 0)
         if judge and q.answerable and not refused:
-            result.judge_correct = judge.judge(q.question, q.key_facts, result.answer).correct
+            judgement = judge.judge(q.question, q.key_facts, result.answer)
+            result.judge_correct = judgement.correct
+            result.judge_input_tokens = judgement.input_tokens
+            result.judge_output_tokens = judgement.output_tokens
         results.append(result)
         status = "refused" if refused else f"{result.facts_found}/{result.facts_total} facts"
         print(f"  {q.id} rank={result.hit_rank} top={result.top_score:.2f} {status}")

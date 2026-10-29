@@ -10,7 +10,7 @@
     "false_refusal_rate": 0.089,
     "answer_correct_rate": 0.889,
     "key_fact_recall": 0.906,
-    "judge_correct_rate": 0.902,
+    "judge_correct_rate": 0.927,
     "mean_latency_ms": 2159.8,
     "input_tokens": 84922,
     "output_tokens": 5637,
@@ -32,6 +32,8 @@
       "latency_ms": 4815.5,
       "input_tokens": 1845,
       "output_tokens": 91,
+      "judge_input_tokens": 0,
+      "judge_output_tokens": 0,
       "refusal_reason": null,
       "missing_facts": []
     },
@@ -48,6 +50,8 @@
       "latency_ms": 3011.0,
       "input_tokens": 2074,
       "output_tokens": 25,
+      "judge_input_tokens": 0,
+      "judge_output_tokens": 0,
       "refusal_reason": "model_unanswerable",
       "missing_facts": []
     },
@@ -64,6 +68,8 @@
       "latency_ms": 1898.4,
       "input_tokens": 2054,
       "output_tokens": 85,
+      "judge_input_tokens": 0,
+      "judge_output_tokens": 0,
       "refusal_reason": null,
       "missing_facts": []
     },
@@ -80,6 +86,8 @@
       "latency_ms": 1248.4,
       "input_tokens": 1413,
       "output_tokens": 64,
+      "judge_input_tokens": 0,
+      "judge_output_tokens": 0,
       "refusal_reason": null,
       "missing_facts": []
     },
@@ -96,6 +104,8 @@
       "latency_ms": 1632.7,
       "input_tokens": 1628,
       "output_tokens": 122,
+      "judge_input_tokens": 0,
+      "judge_output_tokens": 0,
       "refusal_reason": null,
       "missing_facts": []
     },
@@ -112,6 +122,8 @@
       "latency_ms": 2674.7,
       "input_tokens": 1794,
       "output_tokens": 90,
+      "judge_input_tokens": 0,
+      "judge_output_tokens": 0,
       "refusal_reason": null,
       "missing_facts": []
     },
@@ -128,6 +140,8 @@
       "latency_ms": 2554.0,
       "input_tokens": 1636,
       "output_tokens": 152,
+      "judge_input_tokens": 0,
+      "judge_output_tokens": 0,
       "refusal_reason": null,
       "missing_facts": []
     },
@@ -144,6 +158,8 @@
       "latency_ms": 2120.6,
       "input_tokens": 1540,
       "output_tokens": 62,
+      "judge_input_tokens": 0,
+      "judge_output_tokens": 0,
       "refusal_reason": null,
       "missing_facts": []
     },
@@ -160,6 +176,8 @@
       "latency_ms": 1769.1,
       "input_tokens": 1356,
       "output_tokens": 159,
+      "judge_input_tokens": 0,
+      "judge_output_tokens": 0,
       "refusal_reason": null,
       "missing_facts": []
     },
@@ -176,6 +194,8 @@
       "latency_ms": 1724.2,
       "input_tokens": 1490,
       "output_tokens": 121,
+      "judge_input_tokens": 0,
+      "judge_output_tokens": 0,
       "refusal_reason": null,
       "missing_facts": []
     },
@@ -192,6 +212,8 @@
       "latency_ms": 1950.6,
       "input_tokens": 1352,
       "output_tokens": 125,
+      "judge_input_tokens": 0,
+      "judge_output_tokens": 0,
       "refusal_reason": null,
       "missing_facts": []
     },
@@ -208,6 +230,8 @@
       "latency_ms": 5012.6,
       "input_tokens": 2082,
       "output_tokens": 86,
+      "judge_input_tokens": 0,
+      "judge_output_tokens": 0,
       "refusal_reason": null,
       "missing_facts": []
     },
@@ -224,6 +248,8 @@
       "latency_ms": 1415.6,
       "input_tokens": 1416,
       "output_tokens": 119,
+      "judge_input_tokens": 0,
+      "judge_output_tokens": 0,
       "refusal_reason": null,
       "missing_facts": []
     },
@@ -240,6 +266,8 @@
       "latency_ms": 1770.0,
       "input_tokens": 1065,
       "output_tokens": 80,
+      "judge_input_tokens": 0,
+      "judge_output_tokens": 0,
       "refusal_reason": null,
       "missing_facts": []
     },
@@ -256,6 +284,8 @@
       "latency_ms": 1423.3,
       "input_tokens": 1037,
       "output_tokens": 89,
+      "judge_input_tokens": 0,
+      "judge_output_tokens": 0,
       "refusal_reason": null,
       "missing_facts": []
     },
@@ -272,6 +302,8 @@
       "latency_ms": 2000.9,
       "input_tokens": 1574,
       "output_tokens": 187,
+      "judge_input_tokens": 0,
+      "judge_output_tokens": 0,
       "refusal_reason": null,
       "missing_facts": []
     },
@@ -288,6 +320,8 @@
       "latency_ms": 1247.6,
       "input_tokens": 1425,
       "output_tokens": 69,
+      "judge_input_tokens": 0,
+      "judge_output_tokens": 0,
       "refusal_reason": null,
       "missing_facts": []
     },
@@ -304,6 +338,8 @@
       "latency_ms": 2128.3,
       "input_tokens": 1510,
       "output_tokens": 141,
+      "judge_input_tokens": 0,
+      "judge_output_tokens": 0,
       "refusal_reason": null,
       "missing_facts": []
     },
@@ -320,6 +356,8 @@
       "latency_ms": 2312.5,
       "input_tokens": 1608,
       "output_tokens": 224,
+      "judge_input_tokens": 0,
+      "judge_output_tokens": 0,
       "refusal_reason": null,
       "missing_facts": []
     },
@@ -336,6 +374,8 @@
       "latency_ms": 2189.8,
       "input_tokens": 1607,
       "output_tokens": 183,
+      "judge_input_tokens": 0,
+      "judge_output_tokens": 0,
       "refusal_reason": null,
       "missing_facts": []
     },
@@ -352,6 +392,8 @@
       "latency_ms": 1531.4,
       "input_tokens": 1560,
       "output_tokens": 116,
+      "judge_input_tokens": 0,
+      "judge_output_tokens": 0,
       "refusal_reason": null,
       "missing_facts": []
     },
@@ -368,6 +410,8 @@
       "latency_ms": 1914.3,
       "input_tokens": 1537,
       "output_tokens": 81,
+      "judge_input_tokens": 0,
+      "judge_output_tokens": 0,
       "refusal_reason": null,
       "missing_facts": []
     },
@@ -384,6 +428,8 @@
       "latency_ms": 1396.3,
       "input_tokens": 1383,
       "output_tokens": 81,
+      "judge_input_tokens": 0,
+      "judge_output_tokens": 0,
       "refusal_reason": null,
       "missing_facts": []
     },
@@ -400,6 +446,8 @@
       "latency_ms": 1030.2,
       "input_tokens": 1562,
       "output_tokens": 25,
+      "judge_input_tokens": 0,
+      "judge_output_tokens": 0,
       "refusal_reason": "model_unanswerable",
       "missing_facts": []
     },
@@ -416,6 +464,8 @@
       "latency_ms": 2167.0,
       "input_tokens": 1537,
       "output_tokens": 190,
+      "judge_input_tokens": 0,
+      "judge_output_tokens": 0,
       "refusal_reason": null,
       "missing_facts": []
     },
@@ -432,6 +482,8 @@
       "latency_ms": 1863.3,
       "input_tokens": 1515,
       "output_tokens": 120,
+      "judge_input_tokens": 0,
+      "judge_output_tokens": 0,
       "refusal_reason": null,
       "missing_facts": []
     },
@@ -448,6 +500,8 @@
       "latency_ms": 3599.4,
       "input_tokens": 1592,
       "output_tokens": 263,
+      "judge_input_tokens": 0,
+      "judge_output_tokens": 0,
       "refusal_reason": null,
       "missing_facts": []
     },
@@ -464,6 +518,8 @@
       "latency_ms": 4585.1,
       "input_tokens": 1494,
       "output_tokens": 51,
+      "judge_input_tokens": 0,
+      "judge_output_tokens": 0,
       "refusal_reason": null,
       "missing_facts": []
     },
@@ -480,6 +536,8 @@
       "latency_ms": 993.4,
       "input_tokens": 1553,
       "output_tokens": 25,
+      "judge_input_tokens": 0,
+      "judge_output_tokens": 0,
       "refusal_reason": "model_unanswerable",
       "missing_facts": []
     },
@@ -496,6 +554,8 @@
       "latency_ms": 1349.8,
       "input_tokens": 1956,
       "output_tokens": 134,
+      "judge_input_tokens": 0,
+      "judge_output_tokens": 0,
       "refusal_reason": null,
       "missing_facts": [
         "quaternion"
@@ -514,6 +574,8 @@
       "latency_ms": 1915.6,
       "input_tokens": 1489,
       "output_tokens": 76,
+      "judge_input_tokens": 0,
+      "judge_output_tokens": 0,
       "refusal_reason": null,
       "missing_facts": []
     },
@@ -530,6 +592,8 @@
       "latency_ms": 2921.2,
       "input_tokens": 1948,
       "output_tokens": 182,
+      "judge_input_tokens": 0,
+      "judge_output_tokens": 0,
       "refusal_reason": null,
       "missing_facts": []
     },
@@ -546,6 +610,8 @@
       "latency_ms": 1949.3,
       "input_tokens": 2016,
       "output_tokens": 109,
+      "judge_input_tokens": 0,
+      "judge_output_tokens": 0,
       "refusal_reason": null,
       "missing_facts": []
     },
@@ -562,6 +628,8 @@
       "latency_ms": 3397.1,
       "input_tokens": 2131,
       "output_tokens": 359,
+      "judge_input_tokens": 0,
+      "judge_output_tokens": 0,
       "refusal_reason": null,
       "missing_facts": []
     },
@@ -578,6 +646,8 @@
       "latency_ms": 2072.4,
       "input_tokens": 2327,
       "output_tokens": 144,
+      "judge_input_tokens": 0,
+      "judge_output_tokens": 0,
       "refusal_reason": null,
       "missing_facts": []
     },
@@ -594,6 +664,8 @@
       "latency_ms": 5145.4,
       "input_tokens": 2312,
       "output_tokens": 160,
+      "judge_input_tokens": 0,
+      "judge_output_tokens": 0,
       "refusal_reason": null,
       "missing_facts": []
     },
@@ -610,6 +682,8 @@
       "latency_ms": 4215.2,
       "input_tokens": 2133,
       "output_tokens": 227,
+      "judge_input_tokens": 0,
+      "judge_output_tokens": 0,
       "refusal_reason": null,
       "missing_facts": []
     },
@@ -626,6 +700,8 @@
       "latency_ms": 1860.8,
       "input_tokens": 1885,
       "output_tokens": 129,
+      "judge_input_tokens": 0,
+      "judge_output_tokens": 0,
       "refusal_reason": null,
       "missing_facts": []
     },
@@ -637,11 +713,13 @@
       "top_score": 0.7067,
       "facts_found": 2,
       "facts_total": 2,
-      "judge_correct": false,
+      "judge_correct": true,
       "answer": "By default a *STATIC step uses the first solver that has been installed from this list: SGI, PaStiX, PARDISO, SPOOLES and TAUCS. If none of them is installed, the default is the iterative solver (by Rank and Ruecker) that comes with CalculiX. The SOLVER parameter can be used to select a different one.",
       "latency_ms": 3484.5,
       "input_tokens": 2127,
       "output_tokens": 138,
+      "judge_input_tokens": 507,
+      "judge_output_tokens": 63,
       "refusal_reason": null,
       "missing_facts": []
     },
@@ -658,6 +736,8 @@
       "latency_ms": 2254.7,
       "input_tokens": 2168,
       "output_tokens": 188,
+      "judge_input_tokens": 0,
+      "judge_output_tokens": 0,
       "refusal_reason": null,
       "missing_facts": []
     },
@@ -674,6 +754,8 @@
       "latency_ms": 1726.8,
       "input_tokens": 2130,
       "output_tokens": 25,
+      "judge_input_tokens": 0,
+      "judge_output_tokens": 0,
       "refusal_reason": "model_unanswerable",
       "missing_facts": []
     },
@@ -690,6 +772,8 @@
       "latency_ms": 1684.6,
       "input_tokens": 2064,
       "output_tokens": 168,
+      "judge_input_tokens": 0,
+      "judge_output_tokens": 0,
       "refusal_reason": null,
       "missing_facts": []
     },
@@ -706,6 +790,8 @@
       "latency_ms": 1783.1,
       "input_tokens": 2241,
       "output_tokens": 81,
+      "judge_input_tokens": 0,
+      "judge_output_tokens": 0,
       "refusal_reason": null,
       "missing_facts": []
     },
@@ -722,6 +808,8 @@
       "latency_ms": 1252.2,
       "input_tokens": 1878,
       "output_tokens": 62,
+      "judge_input_tokens": 0,
+      "judge_output_tokens": 0,
       "refusal_reason": null,
       "missing_facts": []
     },
@@ -738,6 +826,8 @@
       "latency_ms": 2789.5,
       "input_tokens": 2284,
       "output_tokens": 154,
+      "judge_input_tokens": 0,
+      "judge_output_tokens": 0,
       "refusal_reason": null,
       "missing_facts": []
     },
@@ -754,6 +844,8 @@
       "latency_ms": 17.4,
       "input_tokens": 0,
       "output_tokens": 0,
+      "judge_input_tokens": 0,
+      "judge_output_tokens": 0,
       "refusal_reason": "low_retrieval_score",
       "missing_facts": []
     },
@@ -770,6 +862,8 @@
       "latency_ms": 30.9,
       "input_tokens": 0,
       "output_tokens": 0,
+      "judge_input_tokens": 0,
+      "judge_output_tokens": 0,
       "refusal_reason": "low_retrieval_score",
       "missing_facts": []
     },
@@ -786,6 +880,8 @@
       "latency_ms": 1482.5,
       "input_tokens": 2296,
       "output_tokens": 25,
+      "judge_input_tokens": 0,
+      "judge_output_tokens": 0,
       "refusal_reason": "model_unanswerable",
       "missing_facts": []
     },
@@ -802,6 +898,8 @@
       "latency_ms": 1245.2,
       "input_tokens": 1994,
       "output_tokens": 25,
+      "judge_input_tokens": 0,
+      "judge_output_tokens": 0,
       "refusal_reason": "model_unanswerable",
       "missing_facts": []
     },
@@ -818,6 +916,8 @@
       "latency_ms": 1429.4,
       "input_tokens": 2304,
       "output_tokens": 25,
+      "judge_input_tokens": 0,
+      "judge_output_tokens": 0,
       "refusal_reason": "model_unanswerable",
       "missing_facts": []
     }

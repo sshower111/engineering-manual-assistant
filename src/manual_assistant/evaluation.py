@@ -58,6 +58,8 @@ class QuestionResult:
     latency_ms: float = 0.0
     input_tokens: int = 0
     output_tokens: int = 0
+    judge_input_tokens: int = 0
+    judge_output_tokens: int = 0
     refusal_reason: str | None = None
     missing_facts: list[str] = field(default_factory=list)
 
@@ -118,6 +120,8 @@ def summarize(results: list[QuestionResult], with_answers: bool = True) -> dict:
             mean_latency_ms=round(statistics.fmean(r.latency_ms for r in results), 1),
             input_tokens=sum(r.input_tokens for r in results),
             output_tokens=sum(r.output_tokens for r in results),
+            judge_input_tokens=sum(r.judge_input_tokens for r in results),
+            judge_output_tokens=sum(r.judge_output_tokens for r in results),
         )
     return summary
 

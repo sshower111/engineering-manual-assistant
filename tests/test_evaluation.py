@@ -64,7 +64,9 @@ def test_summary_metrics():
         score_question(question(answerable=False, facts=(), sources=()), [hit("u/x")], "", True),
         score_question(question(answerable=False, facts=(), sources=()), [hit("u/x")], "Hi", False),
     ]
+    results[0].judge_input_tokens, results[0].judge_output_tokens = 300, 40
     summary = summarize(results)
+    assert (summary["judge_input_tokens"], summary["judge_output_tokens"]) == (300, 40)
     assert summary["hit_rate"] == 0.5
     assert summary["hit_rate_at_1"] == 0.0
     assert summary["mrr"] == 0.25  # (1/2 + 0) / 2

@@ -2,7 +2,9 @@
 
 from types import SimpleNamespace
 
-from manual_assistant.llm import Generation, LLMAnswer
+from pydantic import BaseModel
+
+from manual_assistant.llm import Generation
 from manual_assistant.models import RetrievedChunk
 
 
@@ -37,9 +39,9 @@ class FakeGenerator:
 
 
 class FakeAnthropicClient:
-    """Mimics ``client.beta.messages.parse`` and records the request."""
+    """Mimics ``client.beta.messages.parse`` / ``client.messages.parse`` and records requests."""
 
-    def __init__(self, parsed: LLMAnswer | None, stop_reason: str = "end_turn") -> None:
+    def __init__(self, parsed: BaseModel | None, stop_reason: str = "end_turn") -> None:
         self.requests: list[dict] = []
         self._response = SimpleNamespace(
             parsed_output=parsed,
@@ -47,7 +49,8 @@ class FakeAnthropicClient:
             model="claude-test",
             usage=SimpleNamespace(input_tokens=100, output_tokens=20),
         )
-        self.beta = SimpleNamespace(messages=SimpleNamespace(parse=self._parse))
+        self.messages = SimpleNamespace(parse=self._parse)
+        self.beta = SimpleNamespace(messages=self.messages)
 
     def _parse(self, **kwargs):
         self.requests.append(kwargs)

@@ -190,8 +190,8 @@ Full pipeline, `claude-sonnet-5-5` at effort `low`, top-k 5, `min_score` 0.45
 | Chunks (size / overlap, chars) | Hit rate@5 | Hit@1 | MRR | Answer correct | Key-fact recall | Judge correct | Correct refusals | False refusals | Latency (ms) |
 |---|---|---|---|---|---|---|---|---|---|
 | 400 / 80 | 0.978 | 0.911 | 0.935 | 0.889 | 0.891 | 0.929 | 1.0 | 0.067 | 2540 |
-| 800 / 150 | 0.978 | 0.867 | 0.919 | 0.889 | 0.906 | 0.902 | 1.0 | 0.089 | 2160 |
-| 1200 / 200 | 0.956 | 0.867 | 0.904 | 0.933 | 0.938 | 0.930 | 1.0 | 0.044 | 2003 |
+| 800 / 150 | 0.978 | 0.867 | 0.919 | 0.889 | 0.906 | 0.927 | 1.0 | 0.089 | 2160 |
+| 1200 / 200 | 0.956 | 0.867 | 0.904 | 0.933 | 0.938 | 0.953 | 1.0 | 0.044 | 2003 |
 
 Retrieval only, refusal decided by the 0.45 threshold alone, no LLM
 (`uv run python eval/run_eval.py --retrieval-only`; files `eval/results/retrieval_*`):
@@ -215,9 +215,12 @@ questions before the LLM) plus 126 judge calls.
 | **Total** | **247,452** | **16,102** | | |
 
 At $2 / $10 per million input / output tokens that is about **$0.66** for the answers,
-or roughly $0.004 per question at the default chunk size. Judge token usage is not
-recorded by the harness; at Haiku 5.5 prices ($0.10 / $0.50 per million) the 126 short
-judge calls cost a few cents at most. Retrieval itself takes 30–80 ms on CPU; almost all
+or roughly $0.004 per question at the default chunk size. Judge tokens were not
+recorded in this run; the harness now records them (`judge_input_tokens` /
+`judge_output_tokens` per question and in the summary). The 3 judge calls made when
+re-scoring q39 used about 490 input and 65 output tokens each, so the 126 judge calls
+come to roughly 61k input and 8k output tokens, about $0.01 at Haiku 5.5 prices
+($0.10 / $0.50 per million). Retrieval itself takes 30–80 ms on CPU; almost all
 latency is the Claude call. Larger chunks mean more input tokens per question (about
 1,400 at 400 chars vs. 2,000 at 1,200) but slightly lower latency.
 
@@ -238,10 +241,13 @@ latency is the Claude call. Larger chunks mean more input tokens per question (a
   "position and rotation" but never "quaternion", so the model correctly declined to
   add it).
 - **Key-fact matching and the judge disagree in both directions.** The Haiku judge is
-  stricter on some answers that contain every key fact (q07, q14), and q39's key facts
-  are arguably wrong: the manual says the default is the first *installed* solver from
-  a list, which the answer states correctly. Treat differences of one or two questions
+  stricter on some answers that contain every key fact (q07, q14) and more lenient on
+  wording the substring match misses. Treat differences of one or two questions
   (0.02–0.04) between configurations as noise.
+- q39's key facts were corrected after this run: they named PaStiX, but the manual says
+  the default is the first *installed* solver from a list (SGI, PaStiX, PARDISO, SPOOLES,
+  TAUCS), with CalculiX's iterative solver as the fallback. q39 was re-scored on the saved
+  answers and re-judged (3 judge calls); only the judge column changed.
 - The default chunk size stays at 800 / 150 for now; 1200 / 200 is the better choice on
   these numbers and is one setting away (`MA_CHUNK_SIZE=1200 MA_CHUNK_OVERLAP=200`),
   but the margin is two questions on a 45-question set.

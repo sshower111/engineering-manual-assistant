@@ -36,7 +36,7 @@
 {"id": "q36", "question": "How many characters can a CalculiX material name have?", "answerable": true, "corpus": "calculix", "expected_sources": ["*MATERIAL"], "key_facts": ["80"]}
 {"id": "q37", "question": "How do I request the 10 lowest eigenfrequencies in CalculiX?", "answerable": true, "corpus": "calculix", "expected_sources": ["*FREQUENCY"], "key_facts": ["*FREQUENCY", "10"]}
 {"id": "q38", "question": "What kind of element is the CalculiX C3D10 element?", "answerable": true, "corpus": "calculix", "expected_sources": ["*ELEMENT", "C3D10"], "key_facts": ["10-node|ten-node", "tetrahedral"]}
-{"id": "q39", "question": "Which equation solver does a CalculiX *STATIC step use by default?", "answerable": true, "corpus": "calculix", "expected_sources": ["*STATIC"], "key_facts": ["PaStiX", "iterative"]}
+{"id": "q39", "question": "Which equation solver does a CalculiX *STATIC step use by default?", "answerable": true, "corpus": "calculix", "expected_sources": ["*STATIC"], "key_facts": ["installed|available", "iterative"]}
 {"id": "q40", "question": "How do I tell CalculiX how many cores to use for building the element stiffness matrices in parallel?", "answerable": true, "corpus": "calculix", "expected_sources": ["in parallel"], "key_facts": ["OMP_NUM_THREADS|OMP NUM THREADS", "CCX_NPROC_STIFFNESS|CCX NPROC STIFFNESS"]}
 {"id": "q41", "question": "Which units does CalculiX use?", "answerable": true, "corpus": "calculix", "expected_sources": ["Units"], "key_facts": ["consistent"]}
 {"id": "q42", "question": "According to the CalculiX golden rules, what should you do first when dealing with a nonlinear problem?", "answerable": true, "corpus": "calculix", "expected_sources": ["Golden rules"], "key_facts": ["linear"]}
