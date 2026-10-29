@@ -6,11 +6,11 @@
     "hit_rate": 0.978,
     "hit_rate_at_1": 0.911,
     "mrr": 0.935,
-    "correct_refusal_rate": 0.0,
+    "correct_refusal_rate": 0.4,
     "false_refusal_rate": 0.0,
     "chunk_size": 400,
     "chunk_overlap": 80,
-    "min_score": 0.35
+    "min_score": 0.45
   },
   "results": [
     {
@@ -845,7 +845,7 @@
     {
       "id": "q46",
       "answerable": false,
-      "refused": false,
+      "refused": true,
       "hit_rank": null,
       "top_score": 0.4028,
       "facts_found": 0,
@@ -861,7 +861,7 @@
     {
       "id": "q47",
       "answerable": false,
-      "refused": false,
+      "refused": true,
       "hit_rank": null,
       "top_score": 0.4361,
       "facts_found": 0,

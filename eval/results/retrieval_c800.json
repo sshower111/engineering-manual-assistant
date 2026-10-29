@@ -6,11 +6,11 @@
     "hit_rate": 0.978,
     "hit_rate_at_1": 0.867,
     "mrr": 0.919,
-    "correct_refusal_rate": 0.0,
+    "correct_refusal_rate": 0.4,
     "false_refusal_rate": 0.0,
     "chunk_size": 800,
     "chunk_overlap": 150,
-    "min_score": 0.35
+    "min_score": 0.45
   },
   "results": [
     {
@@ -662,7 +662,7 @@
       "answerable": true,
       "refused": false,
       "hit_rank": 2,
-      "top_score": 0.6679,
+      "top_score": 0.6624,
       "facts_found": 0,
       "facts_total": 1,
       "judge_correct": null,
@@ -756,7 +756,7 @@
       "answerable": true,
       "refused": false,
       "hit_rank": 1,
-      "top_score": 0.5716,
+      "top_score": 0.5748,
       "facts_found": 0,
       "facts_total": 1,
       "judge_correct": null,
@@ -845,7 +845,7 @@
     {
       "id": "q46",
       "answerable": false,
-      "refused": false,
+      "refused": true,
       "hit_rank": null,
       "top_score": 0.4029,
       "facts_found": 0,
@@ -861,7 +861,7 @@
     {
       "id": "q47",
       "answerable": false,
-      "refused": false,
+      "refused": true,
       "hit_rank": null,
       "top_score": 0.4361,
       "facts_found": 0,

@@ -17,6 +17,15 @@ from manual_assistant.schemas import AskRequest, AskResponse
 STATIC_DIR = Path(__file__).parent / "static"
 
 
+def require_index(store, collection: str) -> None:
+    """Fail at startup on an empty collection instead of refusing every question."""
+    if store.count() == 0:
+        raise RuntimeError(
+            f"Chroma collection {collection!r} is empty. "
+            "Build it first: python -m manual_assistant.ingest"
+        )
+
+
 def build_assistant(settings: Settings) -> Assistant:
     from manual_assistant.embeddings import SentenceTransformerEmbedder
     from manual_assistant.llm import ClaudeAnswerGenerator
@@ -28,6 +37,7 @@ def build_assistant(settings: Settings) -> Assistant:
         settings.collection_name,
         SentenceTransformerEmbedder(settings.embedding_model),
     )
+    require_index(store, settings.collection_name)
     generator = ClaudeAnswerGenerator(
         settings.llm_model, settings.llm_max_tokens, settings.llm_effort
     )

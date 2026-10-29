@@ -1,9 +1,11 @@
+import pytest
 from fakes import FakeGenerator, FakeRetriever, chunk
 from fastapi.testclient import TestClient
 
-from manual_assistant.api import create_app
+from manual_assistant.api import create_app, require_index
 from manual_assistant.assistant import Assistant
 from manual_assistant.query_log import QueryLogger
+from manual_assistant.store import VectorStore
 
 
 def client(hits, tmp_path):
@@ -37,3 +39,9 @@ def test_index_page_and_health(tmp_path):
     with client([], tmp_path) as c:
         assert "Engineering Manual Assistant" in c.get("/").text
         assert c.get("/health").json() == {"status": "ok"}
+
+
+def test_empty_index_fails_at_startup(fake_embedder):
+    store = VectorStore(None, "test_empty", fake_embedder)
+    with pytest.raises(RuntimeError, match="manual_assistant.ingest"):
+        require_index(store, "test_empty")

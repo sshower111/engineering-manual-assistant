@@ -92,3 +92,7 @@ def main() -> None:
     logging.getLogger("httpx").setLevel(logging.WARNING)
 
     build_index(settings, args.chunk_size, args.chunk_overlap, args.collection)
+
+
+if __name__ == "__main__":
+    main()
